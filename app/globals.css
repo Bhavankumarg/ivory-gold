@@ -15,7 +15,7 @@
 }
 * {
   font-family: "Roboto";
-  font-family: "Wolmer";
+  /* font-family: "Wolmer"; */
 }
 /* Roboto Font Family */
 @font-face {
@@ -50,7 +50,7 @@
   font-family: "Wolmer";
   font-weight: 300;
   font-style: normal;
-  font-size: 5.5rem;
+  font-size: 150px;
 }
 @media (max-width: 768px) {
   .wolmer-100 {
@@ -281,4 +281,83 @@ button {
 .marker-green::marker {
   color: #67C15E !important;
   font-size: 1rem;
+}
+
+/* Phone Input Styles */
+.phone-input .PhoneInputInput {
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  font-size: 16px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+.phone-input .PhoneInputCountrySelect {
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin-right: 8px !important;
+}
+
+.phone-input .PhoneInputCountrySelectArrow {
+  border-color: #666 transparent transparent !important;
+}
+
+.phone-input .PhoneInputCountryIcon {
+  width: 20px !important;
+  height: 15px !important;
+}
+
+.phone-input .PhoneInputCountryIconImg {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* Date Picker Styles */
+.react-datepicker-wrapper {
+  width: 100% !important;
+}
+
+.react-datepicker__input-container input {
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  width: 100% !important;
+  font-size: 16px !important;
+  padding: 0 !important;
+}
+
+.react-datepicker {
+  border: 1px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.react-datepicker__header {
+  background-color: #f9fafb !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+.react-datepicker__day--selected {
+  background-color: #D4AF37 !important;
+  color: black !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: #D4AF37 !important;
+  color: black !important;
+}
+
+.react-datepicker__day:hover {
+  background-color: #f3f4f6 !important;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item--selected {
+  background-color: #D4AF37 !important;
+  color: black !important;
 }

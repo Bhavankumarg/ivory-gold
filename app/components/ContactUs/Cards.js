@@ -1,6 +1,9 @@
 import Image from "next/image";
 import React from "react";
-import { IoLogoInstagram, IoLogoFacebook, IoLogoLinkedin } from "react-icons/io5";
+import { IoLogoInstagram } from "react-icons/io5";
+import { RiFacebookCircleLine } from "react-icons/ri";
+import { PiLinkedinLogo } from "react-icons/pi";
+import Link from "next/link";
 
 const Cards = () => {
   const cardData = [
@@ -10,11 +13,12 @@ const Cards = () => {
       alt: "map",
       title: "Visit Us",
       content: (
-        <p className="roboto-light">
+       <>
           Ivory & Gold Luxury Salon <br />
-          [Full Address Line 1] <br />
-          [Area, Bengaluru, PIN Code]
-        </p>
+          4th Floor, 16 & 16/1, Vasanth Nagar, <br />
+          Bengaluru, Karnataka 560025
+          </>
+        
       ),
     },
     {
@@ -22,21 +26,33 @@ const Cards = () => {
       image: "/contact-us/phone.svg",
       alt: "phone",
       title: "Call Us",
-      content: <p className="roboto-light">+91 [phone number]</p>,
+      content: (
+        <>
+        <a href="tel:+91 [phone number]">+91 [phone number]</a>
+        </>
+      ),
     },
     {
       id: 3,
       image: "/contact-us/mail.svg",
       alt: "mail",
       title: "Write to Us",
-      content: <p className="roboto-light">contact@ivoryandgold.com</p>,
+      content: (
+        <>
+        <a href="mailto:contact@ivoryandgold.com">contact@ivoryandgold.com</a>
+        </>
+      ),
     },
     {
       id: 4,
       image: "/contact-us/clock.svg",
       alt: "clock",
       title: "Hours",
-      content: <p className="roboto-light">Monday – Sunday: 10 AM – 8 PM</p>,
+      content: (
+        <>
+        Monday – Sunday: 10 AM – 8 PM
+        </>
+      ),
     },
     {
       id: 5,
@@ -45,9 +61,10 @@ const Cards = () => {
       title: "Follow Us",
       content: (
         <div className="flex items-center justify-center gap-4">
-          <IoLogoInstagram className="text-2xl" />
-          <IoLogoFacebook className="text-2xl" />
-          <IoLogoLinkedin className="text-2xl" />
+          <Link target="_blank" href="https://www.instagram.com/"><IoLogoInstagram className="text-3xl hover:text-[#D4AF37] duration-300 transition-all" /></Link>
+          <Link target="_blank" href="https://www.facebook.com/"><RiFacebookCircleLine className="text-3xl hover:text-[#D4AF37] duration-300 transition-all" /></Link>
+          <Link target="_blank" href="https://www.linkedin.com/company/"><PiLinkedinLogo className="text-3xl hover:text-[#D4AF37] duration-300 transition-all" /></Link>
+          
         </div>
       ),
     },
@@ -56,7 +73,7 @@ const Cards = () => {
   return (
     <>
       <div className="container mx-auto lg:px-0 px-4">
-        <div className="py-10 grid lg:grid-cols-3 grid-cols-1 items-center justify-center gap-5">
+        <div className="lg:py-10 grid lg:grid-cols-3 grid-cols-1 items-center justify-center gap-5">
           {cardData.map((card) => (
             <div
               key={card.id}
@@ -70,9 +87,9 @@ const Cards = () => {
                   height={70}
                   className="lg:h-28"
                 />
-                <h3 className="lg:h-14">{card.title}</h3>
+                <h3 className="lg:h-14 text-center">{card.title}</h3>
               </div>
-              <div className="text-center lg:h-20">
+              <div className="text-center lg:h-20 text-xl roboto-light">
                 {card.content}
               </div>
             </div>

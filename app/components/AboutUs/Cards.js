@@ -14,13 +14,11 @@ const Cards = () => {
       alt: "crafted",
       title: "Crafted with intention",
       content: (
-      
         <>
-  Precision and care define
+          Precision and care define
           <br />
           every detail.
         </>
-
       ),
     },
     {
@@ -29,15 +27,11 @@ const Cards = () => {
       alt: "luxury",
       title: "Luxury that whispers",
       content: (
-      
         <>
           Plush interiors, premium
           <br />
           products, and a serene ambience.
         </>
-
-       
-
       ),
     },
     {
@@ -46,13 +40,11 @@ const Cards = () => {
       alt: "trends",
       title: "Beyond trends",
       content: (
-      
         <>
           A timeless approach that endures,
           <br />
           never fades.
         </>
-
       ),
     },
   ];
@@ -74,11 +66,13 @@ const Cards = () => {
                   height={70}
                   className="lg:h-28"
                 />
-                <h5 className="text-3xl font-light wolmer-bold">
+                <h5 className="text-3xl font-light wolmer-bold text-center">
                   {card.title}
                 </h5>
               </div>
-              <div className="text-center lg:h-20">{card.content}</div>
+              <div className="text-center lg:h-20 text-xl roboto-light">
+                {card.content}
+              </div>
             </div>
           ))}
         </div>

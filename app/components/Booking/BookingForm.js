@@ -4,6 +4,10 @@ import { ChevronDown, ChevronUp, Loader2, CheckCircle, AlertCircle } from "lucid
 import axios from "axios";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { FaRegCalendarAlt, FaRegClock } from "react-icons/fa";
+
 
 const services = ["Nails", "Manicure", "Pedicure", "Hair", "Beauty", "Makeup"];
 
@@ -18,6 +22,10 @@ const BookingForm = () => {
     "your-time": "",
     "your-visit": "Yes"
   });
+
+  // Date picker state
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedTime, setSelectedTime] = useState(null);
 
   // UI state
   const [isOpen, setIsOpen] = useState(false);
@@ -99,7 +107,7 @@ const BookingForm = () => {
   };
 
   // Handle phone number change
-const handlePhoneChange = (value) => {
+  const handlePhoneChange = (value) => {
     if (!value) {
       setFormData(prev => ({ ...prev, "your-phone": "" }));
       return;
@@ -136,6 +144,46 @@ const handlePhoneChange = (value) => {
     // Clear error if fixed
     if (errors["your-phone"]) {
       setErrors(prev => ({ ...prev, "your-phone": "" }));
+    }
+  };
+
+  // Handle date change
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    if (date) {
+      const formattedDate = date.toISOString().split('T')[0]; // YYYY-MM-DD format
+      setFormData(prev => ({
+        ...prev,
+        "your-date": formattedDate
+      }));
+      
+      // Clear error
+      if (errors["your-date"]) {
+        setErrors(prev => ({
+          ...prev,
+          "your-date": ""
+        }));
+      }
+    }
+  };
+
+  // Handle time change
+  const handleTimeChange = (time) => {
+    setSelectedTime(time);
+    if (time) {
+      const formattedTime = time.toTimeString().slice(0, 5); // HH:MM format
+      setFormData(prev => ({
+        ...prev,
+        "your-time": formattedTime
+      }));
+      
+      // Clear error
+      if (errors["your-time"]) {
+        setErrors(prev => ({
+          ...prev,
+          "your-time": ""
+        }));
+      }
     }
   };
   
@@ -223,8 +271,10 @@ const handlePhoneChange = (value) => {
           "your-service": "",
           "your-date": "",
           "your-time": "",
-          "your-visit": ""
+          "your-visit": "Yes"
         });
+        setSelectedDate(null);
+        setSelectedTime(null);
       } else {
         setSubmitStatus('error');
         // Handle CF7 validation errors
@@ -246,7 +296,7 @@ const handlePhoneChange = (value) => {
   };
 
   return (
-    <div className="flex justify-center items-center p-4">
+    <div className="flex justify-center items-center p-4 pb-20">
       <form onSubmit={handleSubmit} className="w-full container mx-auto">
         {/* Success/Error Messages */}
         {submitStatus === 'success' && (
@@ -363,31 +413,40 @@ const handlePhoneChange = (value) => {
         {/* Third Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
           <div>
-            <div className={`flex items-center border rounded-xl p-3 ${
+            <div className={`relative border rounded-xl p-3 ${
               errors["your-date"] ? 'border-red-500' : 'border-gray-300'
             }`}>
-              <input
-                type="date"
-                name="your-date"
-                value={formData["your-date"]}
-                onChange={handleInputChange}
-                className="w-full focus:outline-none bg-transparent"
+              <DatePicker
+                selected={selectedDate}
+                onChange={handleDateChange}
+                dateFormat="dd/MM/yyyy"
+                placeholderText="Preferred Date (DD/MM/YYYY)"
+                minDate={new Date()}
+                className="w-full pr-10 focus:outline-none bg-transparent"
+                showPopperArrow={false}
               />
+              <FaRegCalendarAlt className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-black" />
             </div>
             {errors["your-date"] && <span className="text-red-500 text-sm mt-1">{errors["your-date"]}</span>}
           </div>
           
           <div>
-            <div className={`flex items-center border rounded-xl p-3 ${
+            <div className={`relative border rounded-xl p-3 ${
               errors["your-time"] ? 'border-red-500' : 'border-gray-300'
             }`}>
-              <input
-                type="time"
-                name="your-time"
-                value={formData["your-time"]}
-                onChange={handleInputChange}
-                className="w-full focus:outline-none bg-transparent"
+              <DatePicker
+                selected={selectedTime}
+                onChange={handleTimeChange}
+                showTimeSelect
+                showTimeSelectOnly
+                timeIntervals={15}
+                timeCaption="Time"
+                dateFormat="h:mm aa"
+                placeholderText="Preferred Time (HH:MM)"
+                className="w-full pr-10 focus:outline-none bg-transparent"
+                showPopperArrow={false}
               />
+              <FaRegClock className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-black" />
             </div>
             {errors["your-time"] && <span className="text-red-500 text-sm mt-1">{errors["your-time"]}</span>}
           </div>
@@ -400,10 +459,10 @@ const handlePhoneChange = (value) => {
             <button
               type="button"
               onClick={() => handleVisitedBefore("Yes")}
-              className={`px-4 py-1 rounded-l-2xl focus:outline-none border-0 ${
+              className={`px-4 py-1 rounded-l-3xl focus:outline-none border-0 ${
                 formData["your-visit"] === "Yes"
-                  ? 'bg-yellow-500 text-white duration-300 transition-all'
-                  : 'bg-white border text-gray-700'
+                  ? 'bg-[#D4AF37] text-black duration-500 transition-all'
+                  : 'bg-white border text-black'
               }`}
             >
               Yes
@@ -411,10 +470,10 @@ const handlePhoneChange = (value) => {
             <button
               type="button"
               onClick={() => handleVisitedBefore("No")}
-              className={`px-4 py-1 rounded-r-2xl focus:outline-none border-0 ${
+              className={`px-4 py-1 rounded-r-3xl focus:outline-none border-0 ${
                 formData["your-visit"] === "No"
-                  ? 'bg-yellow-500 text-white duration-300 transition-all'
-                  : 'bg-white border text-gray-700'
+                  ? 'bg-[#D4AF37] text-black duration-500 transition-all'
+                  : 'bg-white border text-black'
               }`}
             >
               No
@@ -428,10 +487,10 @@ const handlePhoneChange = (value) => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`px-6 py-2 border rounded-xl shadow-sm hover:shadow-md transition font-medium border-yellow-500 flex items-center gap-2 ${
+            className={`px-6 py-2 border rounded-xl shadow-sm hover:shadow-md transition font-medium border-[#D4AF37] flex items-center gap-2 ${
               isSubmitting 
                 ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
-                : 'bg-white hover:bg-yellow-50'
+                : 'bg-white hover:bg-[#D4AF37]'
             }`}
           >
             {isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}

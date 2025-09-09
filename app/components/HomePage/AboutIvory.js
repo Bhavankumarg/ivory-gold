@@ -20,7 +20,27 @@ const AboutIvory = () => {
           </div>
         </div>
         <div className="flex justify-center items-center">
-        
+          <Image
+            src="/home/about-ivory/about-ivory.png"
+            alt="about-ivory"
+            width={800}
+            height={800}
+            className="object-cover hidden lg:block"
+          />
+        </div>
+        <div className="flex justify-center items-center">
+          <Image
+            src="/home/about-ivory/mobile-ivory.png"
+            alt="about-ivory"
+            width={400}
+            height={400}
+            className="lg:hidden"
+          />
+        </div>
+        <div className="flex justify-center items-center pb-10">
+          <button className="mt-8 px-6 py-2 border border-[#D4AF37] rounded-xl text-[#000] hover:bg-[#D4AF37] hover:text-white transition">
+            About Us
+          </button>
         </div>
       </div>
     </>
