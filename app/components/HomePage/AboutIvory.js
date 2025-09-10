@@ -2,6 +2,7 @@ import { HeroParallax } from "@/components/ui/hero-parallax";
 import { products } from "@/components/ui/parallex-items";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 const AboutIvory = () => {
   return (
     <>
@@ -23,8 +24,8 @@ const AboutIvory = () => {
           <Image
             src="/home/about-ivory/about-ivory.png"
             alt="about-ivory"
-            width={800}
-            height={800}
+            width={1200}
+            height={1000}
             className="object-cover hidden lg:block"
           />
         </div>
@@ -38,9 +39,10 @@ const AboutIvory = () => {
           />
         </div>
         <div className="flex justify-center items-center pb-10">
-          <button className="mt-8 px-6 py-2 border border-[#D4AF37] rounded-xl text-[#000] hover:bg-[#D4AF37] hover:text-white transition">
+          <Link href="/about-us">
+          <button className="mt-8 text-2xl px-6 py-2 border border-[#D4AF37] rounded-xl text-[#000] hover:bg-[#D4AF37] hover:text-white transition">
             About Us
-          </button>
+          </button></Link>
         </div>
       </div>
     </>

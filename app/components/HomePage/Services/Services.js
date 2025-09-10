@@ -1,5 +1,6 @@
 import React from "react";
 import ServiceCard from "./ServiceCard";
+import Link from "next/link";
 
 const Services = () => {
   return (
@@ -10,9 +11,10 @@ const Services = () => {
         </div>
         <ServiceCard  />
         <div className="flex justify-center py-10 bg-[#EDEDED]">
+          <Link href="/booking">
           <button className="bg-black hover:bg-[#D4AF37] hover:text-black transition-all duration-300 text-white px-4 py-1 rounded-lg text-2xl">
             Book Appointment
-          </button>
+          </button></Link>
         </div>
       </div>
     </>

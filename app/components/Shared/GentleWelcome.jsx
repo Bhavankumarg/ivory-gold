@@ -1,4 +1,5 @@
 import { BluetoothConnected } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 const GentleWelcome = () => {
@@ -11,9 +12,11 @@ const GentleWelcome = () => {
           first visit
         </h4>
         <div className="lg:pt-10 pt-5">
-          <button className="bg-[#FFFFFF] hover:bg-[#D4AF37] hover:text-white transition-all duration-300 text-black px-4 py-1 rounded-md">
-            <p>Book Appointment</p>
-          </button>
+          <Link href="/booking">
+            <button className="bg-[#FFFFFF] hover:bg-[#D4AF37] hover:text-white transition-all duration-300 text-black px-4 py-1 rounded-md">
+              <p>Book Appointment</p>
+            </button>
+          </Link>
         </div>
       </div>
     </>

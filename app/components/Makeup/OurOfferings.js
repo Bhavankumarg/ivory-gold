@@ -62,8 +62,8 @@ const OurOfferings = () => {
                 <Image
                   src={offering.image}
                   alt={offering.imageAlt}
-                  width={500}
-                  height={500}
+                  width={1000}
+                  height={1000}
                   className="object-cover rounded-lg"
                 />
               </div>
@@ -92,8 +92,8 @@ const OurOfferings = () => {
                 <Image
                   src={offering.image}
                   alt={offering.imageAlt}
-                  width={500}
-                  height={500}
+                  width={1000}
+                  height={1000}
                   className="object-cover rounded-lg"
                 />
               </div>

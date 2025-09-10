@@ -1,96 +1,97 @@
 "use client";
-import {
-  Navbar,
-  NavBody,
-  NavItems,
-  MobileNav,
-  NavbarLogo,
-  NavbarButton,
-  MobileNavHeader,
-  MobileNavToggle,
-  MobileNavMenu,
-} from "@/components/ui/navbar-components";
-import { useState } from "react";
+import React, { useState } from "react";
+import { Menu, X, User } from "lucide-react";
 
-export function NavbarDemo() {
-  const navItems = [
-    {
-      name: "About Us",
-      link: "#about",
-    },
-    {
-      name: "Services ",
-      link: "#services",
-    },
-    {
-      name: "Membership",
-      link: "#membership",
-    },
-    {
-      name: "Gallery",
-      link: "#gallery",
-    },
-
-    {
-      name: "Contact Us",
-      link: "#contact",
-    },
-  ];
-
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative w-full bg-black">
-      <Navbar>
-        {/* Desktop Navigation */}
-        <NavBody>
-          <NavbarLogo />
-          <NavItems items={navItems} />
-          <div className="flex items-center gap-4">
-            <NavbarButton variant="primary" className="bg-[#D4AF37]">
-              Book Appointment
-            </NavbarButton>
-          </div>
-        </NavBody>
+    <header className="bg-black text-white">
+      {/* Top Bar */}
+      <div className="hidden md:flex justify-end text-sm pr-6 py-2 border-b border-gray-800">
+        <span className="mr-4">Working Hours: 10:00 AM to 8:00 PM</span>
+        <span className="mr-4">Call: 01234567890</span>
+        <span className="flex items-center gap-1">
+          <User size={16} /> Login
+        </span>
+      </div>
 
-        {/* Mobile Navigation */}
-        <MobileNav>
-          <MobileNavHeader>
-            <NavbarLogo />
-            <MobileNavToggle
-              isOpen={isMobileMenuOpen}
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            />
-          </MobileNavHeader>
+      {/* Main Navbar */}
+      <div className="flex justify-between items-center px-4 md:px-8 py-3">
+        {/* Logo */}
+        <div className="flex items-center gap-2">
+          <img
+            src="/logo.png" // replace with your logo
+            alt="Ivory & Gold"
+            className="h-10 w-auto"
+          />
+          <span className="text-lg font-serif text-[#d4af37]">Ivory & Gold</span>
+        </div>
 
-          <MobileNavMenu
-            isOpen={isMobileMenuOpen}
-            onClose={() => setIsMobileMenuOpen(false)}
-          >
-            {navItems.map((item, idx) => (
-              <a
-                key={`mobile-link-${idx}`}
-                href={item.link}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-black"
-              >
-                <span className="block">{item.name}</span>
+        {/* Desktop Menu */}
+        <nav className="hidden md:flex items-center gap-6">
+          <a href="#" className="hover:text-[#d4af37]">
+            About Us
+          </a>
+          <div className="group relative">
+            <button className="hover:text-[#d4af37]">Services ▾</button>
+            <div className="absolute hidden group-hover:block bg-black text-white mt-2 rounded-lg shadow-lg">
+              <a href="#" className="block px-4 py-2 hover:bg-gray-800">
+                Service 1
               </a>
-            ))}
-            <div className="flex w-full flex-col gap-4">
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant=""
-                className="w-full bg-[#D4AF37]"
-              >
-                Book Appointment
-              </NavbarButton>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-800">
+                Service 2
+              </a>
             </div>
-          </MobileNavMenu>
-        </MobileNav>
-      </Navbar>
+          </div>
+          <a href="#" className="hover:text-[#d4af37]">
+            Membership
+          </a>
+          <a href="#" className="hover:text-[#d4af37]">
+            Gallery
+          </a>
+          <a href="#" className="hover:text-[#d4af37]">
+            Contact
+          </a>
+          <button className="bg-[#d4af37] text-black font-medium px-4 py-2 rounded-full">
+            Book Appointment
+          </button>
+        </nav>
 
-      {/* Navbar */}
-    </div>
+        {/* Mobile Hamburger */}
+        <button
+          className="md:hidden"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden bg-black text-white px-6 py-4 space-y-4 border-t border-gray-800">
+          <a href="#" className="block hover:text-[#d4af37]">
+            About Us
+          </a>
+          <a href="#" className="block hover:text-[#d4af37]">
+            Services
+          </a>
+          <a href="#" className="block hover:text-[#d4af37]">
+            Membership
+          </a>
+          <a href="#" className="block hover:text-[#d4af37]">
+            Gallery
+          </a>
+          <a href="#" className="block hover:text-[#d4af37]">
+            Contact
+          </a>
+          <button className="w-full bg-[#d4af37] text-black font-medium px-4 py-2 rounded-full">
+            Book Appointment
+          </button>
+        </div>
+      )}
+    </header>
   );
-}
+};
+
+export default Header;

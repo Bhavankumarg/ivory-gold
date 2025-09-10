@@ -3,7 +3,7 @@ import Image from "next/image";
 const Elegance = () => {
   return (
     <div className="py-0 bg-[url('/home/elegance/bg.svg')] bg-cover bg-center bg-no-repeat">
-      <div className="grid lg:grid-cols-2 grid-cols-1 justify-center items-center gap-10">
+      <div className="grid lg:grid-cols-2 grid-cols-1 grid-col-reverse justify-center items-center gap-10">
         <div className="text-center p-5 py-10 bg-gradient-to-r from-[#FEF3AF] via-[#FFF6B1]">
           <h2 className="text-4xl">
             Elegance. Reserved in <br /> Your Name,

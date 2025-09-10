@@ -5,7 +5,7 @@ const HeroBanner = () => {
   return (
     <div>
       <Banner
-        imageSrc="/gallery/banner.png"
+        imageSrc="/gallery/banner-01.png"
         imageAlt="banner"
         title="Ivory & Gold Gallery"
         textColor="text-white"

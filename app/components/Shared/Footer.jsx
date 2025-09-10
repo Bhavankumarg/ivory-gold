@@ -29,7 +29,7 @@ export default function Footer() {
             <li><a href="/gallery" className="hover:text-gray-600 text-lg font-light">Gallery</a></li>
             <li><a href="/media" className="hover:text-gray-600 text-lg font-light">Media</a></li>
             <li><a href="/influencer-spotlight" className="hover:text-gray-600 text-lg font-light">Influencer Spotlight</a></li>
-            <li><a href="/news" className="hover:text-gray-600 text-lg font-light">News</a></li>
+            {/* <li><a href="/news" className="hover:text-gray-600 text-lg font-light">News</a></li> */}
             <li><a href="/contact-us" className="hover:text-gray-600 text-lg font-light">Contact</a></li>
           </ul>
         </div>

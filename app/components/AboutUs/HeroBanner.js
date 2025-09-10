@@ -79,10 +79,10 @@ const VerticalCarousel = () => {
               </div>
 
               {/* Overlay image OUTSIDE main box */}
-              <div className="absolute lg:-bottom-28 -bottom-32 lg:-left-20 right-0 lg:w-56 lg:h-56 w-44 h-44 rotate-[-5deg] rounded-lg overflow-hidden">
+              <div className="absolute lg:-bottom-28 -bottom-32 lg:-left-20 right-0 lg:w-80 lg:h-80 w-52 h-52 rotate-[-5deg] rounded-lg overflow-hidden">
                 <Image
-                  width={300}
-                  height={300}
+                  width={500}
+                  height={500}
                   src="/about-us/overlay.png"
                   alt="overlay"
                   className="w-full h-full object-cover"
@@ -90,12 +90,12 @@ const VerticalCarousel = () => {
               </div>
 
               {/* Dots - outside right */}
-              <div className="absolute lg:-right-8 left-7 lg:left-auto -bottom-10 lg:bottom-0 -translate-y-1/2 flex lg:flex-col flex-row gap-3">
+              <div className="absolute lg:-right-8 left-7 lg:left-auto -bottom-10 lg:-bottom-7 -translate-y-1/2 flex lg:flex-col flex-row gap-4">
                 {images.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrent(index)}
-                    className={`w-4.5 h-4.5 rounded-full border transition-all duration-300 ${
+                    className={`w-6 h-6 rounded-full border transition-all duration-300 ${
                       current === index
                         ? "bg-[#FBBC05] border-[#FBBC05]"
                         : "bg-black border-black"

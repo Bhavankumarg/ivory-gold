@@ -48,7 +48,7 @@ export default function Services() {
             cardHeight="h-[400px]"
           />
           <ServiceCard
-            image="/home/services/pedicure.png"
+            image="/home/services/pedicure.jpg"
             title="Pedicure"
             description="A quiet reset for tired feet. Ritual, relief, and polish that lasts."
             bgColor="rgba(255, 253, 209)"
