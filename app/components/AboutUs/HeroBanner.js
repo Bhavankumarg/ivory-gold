@@ -83,7 +83,7 @@ const VerticalCarousel = () => {
                 <Image
                   width={500}
                   height={500}
-                  src="/about-us/overlay.png"
+                  src="/about-us/overlay-01.png"
                   alt="overlay"
                   className="w-full h-full object-cover"
                 />

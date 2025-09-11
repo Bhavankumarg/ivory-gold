@@ -18,12 +18,12 @@ const Header = () => {
       href: null,
       isDropdown: true,
       items: [
-        { name: "Beauty", href: "/beauty" },
-        { name: "Hair Care", href: "/hair" },
-        { name: "Make-up", href: "/make-up" },
-        { name: "Manicure", href: "/manicure" },
         { name: "Nails", href: "/nails" },
+        { name: "Manicure", href: "/manicure" },
         { name: "Pedicure", href: "/pedicure" },
+        { name: "Hair", href: "/hair" },
+        { name: "Beauty", href: "/beauty" },
+        { name: "Make-up", href: "/make-up" },
       ],
     },
     { name: "Membership", href: "/membership" },
@@ -39,6 +39,7 @@ const Header = () => {
 
   return (
     <header className="bg-black text-white">
+      {/* <header className="sticky top-0 z-[100] bg-black text-white"> */}
       {/* Top Bar */}
       <div className="hidden md:flex justify-end text-lg pr-6 py-4">
         <span className="mr-4">Working Hours: 10:00 AM to 8:00 PM</span>
@@ -48,16 +49,26 @@ const Header = () => {
       {/* Main Navbar */}
       <div className="flex justify-between items-center px-4 md:px-8">
         {/* Logo */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-center gap-2">
           <Link href="/">
             <Image
               width={150}
               height={150}
               src="/logo.svg"
               alt="Ivory & Gold"
-              className="lg:-mt-16"
+              className="lg:-mt-16 lg:h-auto lg:w-auto h-32 w-32"
             />
           </Link>
+          <div className="lg:hidden py-3">
+            <span className="text-sm">Working Hours: 10:00 AM to 8:00 PM</span>{" "}
+            <br />
+            <span className=" text-sm">Call: 01234567890</span>
+            <Link href="/booking" className="">
+              <button className="w-42 mt-3 bg-[#d4af37] hover:bg-white hover:text-black transition-all duration-300 text-black font-medium px- py-2 rounded-xl">
+                Book Appointment
+              </button>
+            </Link>
+          </div>
         </div>
 
         {/* Desktop Menu */}
@@ -115,7 +126,7 @@ const Header = () => {
 
           {/* Button */}
           <Link href="/booking">
-            <button className="bg-[#d4af37] text-black font-medium px-4 py-2 rounded-full">
+            <button className="bg-[#d4af37] hover:bg-white hover:text-black hover:border-[#d4af37] transition-all duration-300 text-black font-medium px-4 py-2 rounded-xl">
               Book Appointment
             </button>
           </Link>
@@ -134,6 +145,7 @@ const Header = () => {
             <span className="mr-4">Working Hours: 10:00 AM to 8:00 PM</span>
             <span className="mr-4">Call: 01234567890</span>
           </div>
+
           {/* Mobile Navigation Items */}
           {navigationItems.map((item) => (
             <div key={item.href || item.name}>
@@ -187,12 +199,6 @@ const Header = () => {
               )}
             </div>
           ))}
-
-          <Link href="/booking">
-            <button className="w-full bg-[#d4af37] text-black font-medium px-4 py-2 rounded-full">
-              Book Appointment
-            </button>
-          </Link>
         </div>
       )}
     </header>

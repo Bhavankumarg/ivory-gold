@@ -32,7 +32,7 @@ const Banner = ({
         {showGradient && (
           <div className="absolute z-50 bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
         )}
-        <div className={`absolute z-[60] bottom-4 left-4 ${textColor}`}>
+        <div className={`absolute z-[60] bottom-4 left-4 right-4 container mx-auto ${textColor}`}>
           <h1 className="text-4xl font-bold mb-2">{title}</h1>
         </div>
       </div>

@@ -6,7 +6,7 @@ const WhatMakesUsSection = () => {
     <div className="container mx-auto">
       <WhatMakesUs
         title="What Makes Us Different"
-        description="We work with top-tier international products and tools, ensuring durability, comfort, and insane shine."
+        description="We work with top-tier international products and tools, ensuring durability, comfort, and insane."
       />
     </div>
   );

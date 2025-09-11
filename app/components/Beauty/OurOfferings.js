@@ -55,7 +55,7 @@ const OurOfferings = ({ showList = true, showUl = true, showLi = true }) => {
       title: <h3>Illuminating Eye Treatment</h3>,
       description:
         "A delicate, hydrating gaze enhancer designed to reduce puffiness, brighten dark circles, and revitalize the area around your eyes with soft-cool applications and micro-serum infusion.",
-      image: "/beauty/beauty-4.png",
+      image: "/beauty/beauty-04.png",
       imageAlt: "Classic French & Chrome Finishes",
       imageFirst: false,
       listItems: [

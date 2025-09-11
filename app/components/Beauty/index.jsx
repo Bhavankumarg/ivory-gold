@@ -4,6 +4,7 @@ import GentleWelcome from "../Shared/GentleWelcome";
 import ContentSection from "./ContentSection";
 // import WhatMakesUsSection from "./WhatMakesUsSection";
 import HeroBanner from "./HeroBanner";
+import OtherServices from "../Shared/ServicesProps/OtherServices";
 
 const Beauty = () => {
   return (
@@ -13,6 +14,7 @@ const Beauty = () => {
       <OurOfferings />
       {/* <WhatMakesUsSection /> */}
       <GentleWelcome />
+      <OtherServices hideCurrentService="/beauty" />
     </>
   );
 };

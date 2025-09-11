@@ -1,10 +1,29 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { CiLocationOn } from "react-icons/ci";
 import { CiClock2 } from "react-icons/ci";
 import { CiMail } from "react-icons/ci";
 import { CiPhone } from "react-icons/ci";
+
 const Contact = () => {
+  // Get current time and check if business is open
+  const getBusinessStatus = () => {
+    const now = new Date();
+    const currentHour = now.getHours();
+    
+    // Business hours: 10 AM to 10 PM (22:00)
+    const isOpen = currentHour >= 10 && currentHour < 22;
+    
+    return {
+      isOpen,
+      status: isOpen ? "Open Now" : "Closed",
+      statusColor: isOpen ? "text-[#D4AF37]" : "text-red-500"
+    };
+  };
+
+  const businessStatus = getBusinessStatus();
+
   return (
     <>
       <div className="flex lg:flex-row flex-col justify-center items-center gap-0">
@@ -19,31 +38,43 @@ const Contact = () => {
         </div>
         <div className="bg-black  p-10 flex flex-col gap-10 lg:w-1/2 w-full lg:h-[550px]">
           <div className="flex items-center gap-5">
-            <CiLocationOn className="bg-[#D9D9D9] p-1 rounded-md" size={40} />
-            <h6 className="text-white">
+            <div className="flex-shrink-0">
+              <CiLocationOn className="bg-[#D9D9D9] p-2 rounded-md w-10 h-10 flex items-center justify-center" size={24} />
+            </div>
+            <h6 className="text-white lg:text-xl roboto-light">
               <span>
                 Near Jain Hospital, Vasanth Nagar, Bengaluru, Karnataka 560025
               </span>
             </h6>
           </div>
           <div className="flex items-center gap-5">
-            <CiClock2 className="bg-[#D9D9D9] p-1 rounded-md" size={40} />
+            <div className="flex-shrink-0">
+              <CiClock2 className="bg-[#D9D9D9] p-2 rounded-md w-10 h-10 flex items-center justify-center" size={24} />
+            </div>
             <h6 className="text-white">
-              <span>Open until 10:00 PM</span>{" "}
+              <span className="lg:text-xl roboto-light">Open until 10:00 PM</span>{" "}
               <span>
-                <a className="text-[#D4AF37] underline">Open Now</a>
+                <span className={`${businessStatus.statusColor} underline lg:px-4`}>
+                  {businessStatus.status}
+                </span>
               </span>
             </h6>
           </div>
           <div className="flex items-center gap-5">
-            <CiPhone className="bg-[#D9D9D9] p-1 rounded-md" size={40} />
-            <h6 className="text-white">
-              <span>+917428730894</span>
+            <div className="flex-shrink-0">
+              <CiPhone className="bg-[#D9D9D9] p-2 rounded-md w-10 h-10 flex items-center justify-center" size={24} />
+            </div>
+            <h6 className="text-white lg:text-xl roboto-light">
+              <span >
+                <a href="tel:+917428730894">+917428730894</a>
+              </span>
             </h6>
           </div>
           <div className="flex items-center gap-5">
-            <CiMail className="bg-[#D9D9D9] p-1 rounded-md" size={40} />
-            <h6 className="text-white">
+            <div className="flex-shrink-0">
+              <CiMail className="bg-[#D9D9D9] p-2 rounded-md w-10 h-10 flex items-center justify-center" size={24} />
+            </div>
+            <h6 className="text-white lg:text-xl roboto-light">
               <span>
                 <a
                   className=""
